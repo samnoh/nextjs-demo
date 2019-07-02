@@ -1,8 +1,10 @@
 import axios from 'axios';
+import Helmet from 'react-helmet';
 
 const Post = ({ id, comments }) => {
     return (
         <div>
+            <Helmet title={`Post | #${id}`} />
             <h1>Comments for Post #{id}</h1>
             {comments.map(comment => (
                 <Comment {...comment} key={comment.id} />

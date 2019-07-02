@@ -1,10 +1,12 @@
 import axios from 'axios';
 import Link from 'next/link';
+import Helmet from 'react-helmet';
 
 const Index = ({ posts }) => {
     return (
         <div>
-            <h1>Our Index Page!!!</h1>
+            <Helmet title={'Home'} />
+            <h1>Our Home Page!!!</h1>
             <ul>
                 {posts.map(post => (
                     <li key={post.id}>

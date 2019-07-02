@@ -1,7 +1,8 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import Navbar from '../components/Navbar';
 import { createGlobalStyle } from 'styled-components';
+
+import Navbar from '../components/Navbar';
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -26,7 +27,7 @@ class MyApp extends App {
         return (
             <Container>
                 <GlobalStyle />
-                <Navbar /> {/* see Navbar and footer */}
+                <Navbar />
                 <Component {...pageProps} />
                 <p>Footer!</p>
             </Container>
