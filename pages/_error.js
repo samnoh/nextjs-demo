@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const MyError = ({ statusCode }) => {
     return (
@@ -7,10 +6,6 @@ const MyError = ({ statusCode }) => {
             <h1>{statusCode} Error</h1>
         </div>
     );
-};
-
-MyError.propTypes = {
-    statusCode: PropTypes.number
 };
 
 MyError.defaultProps = {
