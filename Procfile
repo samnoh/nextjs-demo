@@ -1,1 +1,1 @@
-web: npm install --save pm2 && NODE_ENV=production PORT=$PORT pm2 start server.js
+web: pm2-runtime start ecosystem.config.js --env production
