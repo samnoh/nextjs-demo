@@ -1,29 +1,39 @@
-import axios from 'axios';
-import Link from 'next/link';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Helmet from 'react-helmet';
 
-const Index = ({ posts }) => {
+import { getPosts } from '../modules/posts';
+import Post from '../components/Post';
+
+const Index = () => {
+    const dispatch = useDispatch();
+    const { posts } = useSelector(state => state.posts);
+    const loadingPost = useSelector(state => state.loading)['posts/GET_POSTS'];
+
+    useEffect(() => {
+        if (posts) return;
+        const fn = async () => {
+            try {
+                await dispatch(getPosts());
+            } catch (e) {
+                console.log(e);
+            }
+        };
+        fn();
+    }, []);
+
     return (
         <div>
             <Helmet title={'Home'} />
-            <h1>Our Home Page!!!</h1>
-            <ul>
-                {posts.map(post => (
-                    <li key={post.id}>
-                        <Link href={`/post?id=${post.id}`}>
-                            <a>{post.title}</a>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            <h1>Our Home Page</h1>
+            {loadingPost && <h2>Loading...</h2>}
+            <ul>{posts && posts.map(post => <Post key={post.id} {...post} />)}</ul>
         </div>
     );
 };
 
-Index.getInitialProps = async () => {
-    const res = await axios.get('https://jsonplaceholder.typicode.com/posts/');
-    const { data } = res;
-    return { posts: data };
+Index.getInitialProps = async ({ store, isServer }) => {
+    if (isServer) await store.dispatch(getPosts());
 };
 
 export default Index;
