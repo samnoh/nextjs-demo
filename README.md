@@ -1,8 +1,15 @@
 # Next.js Demo
 
+-   functional components only
 -   express (custom server)
--   styled-components
 -   redux
 -   redux-saga
 -   react-helmet
--   axios
+-   styled-components
+
+## Todo
+
+-   cookie
+-   session
+-   auth
+-   backend server
