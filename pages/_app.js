@@ -6,8 +6,8 @@ import withReduxSaga from 'next-redux-saga';
 import Helmet from 'react-helmet';
 import { createGlobalStyle } from 'styled-components';
 
-import configureStore from '../store';
-import Navbar from '../components/Navbar';
+import configureStore from 'store';
+import Navbar from 'components/Navbar';
 
 const GlobalStyle = createGlobalStyle`
     body {

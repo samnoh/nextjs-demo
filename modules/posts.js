@@ -1,8 +1,8 @@
 import { createAction, handleActions } from 'redux-actions';
 import { takeLatest, all } from 'redux-saga/effects';
 
-import * as api from '../lib/api';
-import createRequestSaga from '../lib/createRequestSaga';
+import * as api from 'lib/api';
+import createRequestSaga from 'lib/createRequestSaga';
 
 const GET_POSTS = 'posts/GET_POSTS';
 const GET_POSTS_SUCCESS = 'posts/GET_POSTS_SUCCESS';

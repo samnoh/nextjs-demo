@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Helmet from 'react-helmet';
 
-import { getPosts } from '../modules/posts';
-import Post from '../components/Post';
+import { getPosts } from 'modules/posts';
+import Post from 'components/Post';
 
 const Index = () => {
     const dispatch = useDispatch();

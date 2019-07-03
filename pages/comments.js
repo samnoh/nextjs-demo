@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import Helmet from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getComments } from '../modules/posts';
-import Comment from '../components/Comment';
+import { getComments } from 'modules/posts';
+import Comment from 'components/Comment';
 
 const Comments = ({ id }) => {
     const dispatch = useDispatch();
