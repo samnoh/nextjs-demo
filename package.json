@@ -6,8 +6,7 @@
     "scripts": {
         "dev": "node server.js",
         "build": "rm -rf build && ANALYZE=false next build",
-        "start:next": "next start -p $PORT",
-        "start": "pm2 start server.js",
+        "start": "next start -p $PORT",
         "stop": "pm2 stop 0 && pm2 delete 0"
     },
     "keywords": [],
