@@ -5,8 +5,8 @@
     "main": "server.js",
     "scripts": {
         "dev": "node server.js",
-        "build": "rm -rf build && ANALYZE=true next build",
-        "start": "NODE_ENV=production pm2 start server.js",
+        "build": "rm -rf build && ANALYZE=false next build",
+        "start": "next start",
         "stop": "pm2 stop 0 && pm2 delete 0"
     },
     "keywords": [],
