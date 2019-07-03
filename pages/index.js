@@ -20,7 +20,7 @@ const Index = () => {
             }
         };
         fn();
-    }, []);
+    }, [posts]);
 
     return (
         <div>
