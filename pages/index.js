@@ -38,7 +38,7 @@ const Index = () => {
 };
 
 Index.getInitialProps = async ({ store, isServer }) => {
-    if (isServer) await store.dispatch(getPosts());
+    if (!store.getState().posts.posts) await store.dispatch(getPosts());
 };
 
 export default Index;

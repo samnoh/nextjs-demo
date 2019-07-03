@@ -34,8 +34,8 @@ const Comments = ({ id }) => {
     );
 };
 
-Comments.getInitialProps = async ({ query, store, isServer }) => {
-    if (isServer) await store.dispatch(getComments(query.id));
+Comments.getInitialProps = async ({ query, store }) => {
+    if (!store.getState().posts.comments) await store.dispatch(getComments(query.id));
     return { ...query };
 };
 
