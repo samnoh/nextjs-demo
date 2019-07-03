@@ -1,1 +1,1 @@
-web: pm2 start server.js
+web: next start -p $PORT
