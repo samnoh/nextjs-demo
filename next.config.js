@@ -2,15 +2,25 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
     enabled: process.env.ANALYZE === 'true'
 });
 const webpack = require('webpack');
-const CompressionPlugin = require('compression-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = withBundleAnalyzer({
+    poweredByHeader: false,
     distDir: 'build',
     webpack(config) {
         const prod = process.env.NODE_ENV === 'production';
         const plugins = [...config.plugins];
+
         if (prod) {
-            plugins.push(new CompressionPlugin());
+            plugins.push(
+                new TerserPlugin({
+                    terserOptions: {
+                        compress: {
+                            drop_console: true // remove console.log, error, ...
+                        }
+                    }
+                })
+            );
         }
 
         return {
