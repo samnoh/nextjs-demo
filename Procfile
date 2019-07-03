@@ -1,1 +1,1 @@
-web: next start -p $PORT
+web: npm install --save pm2 && NODE_ENV=production PORT=$PORT pm2 start server.js
