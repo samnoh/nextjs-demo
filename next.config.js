@@ -8,12 +8,9 @@ module.exports = withBundleAnalyzer({
     distDir: 'build',
     webpack(config) {
         const prod = process.env.NODE_ENV === 'production';
-        const plugins = [
-            ...config.plugins,
-            new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /^\.\/ko$/)
-        ];
+        const plugins = [...config.plugins];
         if (prod) {
-            plugins.push(new CompressionPlugin()); // main.js.gz
+            plugins.push(new CompressionPlugin());
         }
 
         return {

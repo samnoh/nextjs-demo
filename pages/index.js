@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Helmet from 'react-helmet';
 
@@ -22,12 +22,17 @@ const Index = () => {
         fn();
     }, [posts]);
 
+    const refreshPosts = useCallback(() => {
+        dispatch(getPosts());
+    }, []);
+
     return (
         <div>
             <Helmet title={'Home'} />
             <h1>Our Home Page</h1>
             {loadingPost && <h2>Loading...</h2>}
-            <ul>{posts && posts.map(post => <Post key={post.id} {...post} />)}</ul>
+            {!loadingPost && posts && <button onClick={refreshPosts}>Refresh</button>}
+            <ul>{!loadingPost && posts && posts.map(post => <Post key={post.id} {...post} />)}</ul>
         </div>
     );
 };
