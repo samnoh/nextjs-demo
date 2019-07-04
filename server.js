@@ -38,6 +38,11 @@ app.prepare().then(() => {
         })
     );
 
+    server.get('/login', (req, res) => {
+        console.log('hello');
+        return app.render(req, res, '/login');
+    });
+
     server.get('*', (req, res) => {
         return handle(req, res);
     });

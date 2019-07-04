@@ -1,6 +1,9 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import styled from 'styled-components';
+
+import { postLogout } from 'modules/user';
 
 const NavbarStyle = styled.div`
     display: flex;
@@ -11,6 +14,8 @@ const NavbarStyle = styled.div`
 `;
 
 const Navbar = () => {
+    const dispatch = useDispatch();
+    const { user } = useSelector(state => state.user);
     return (
         <NavbarStyle>
             <Link href="/">
@@ -22,6 +27,12 @@ const Navbar = () => {
             <Link href="/contact">
                 <a>Contact</a>
             </Link>
+            {!user && (
+                <Link href="/login">
+                    <a>Login</a>
+                </Link>
+            )}
+            {user && <a onClick={() => dispatch(postLogout())}>Logout</a>}
         </NavbarStyle>
     );
 };

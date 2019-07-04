@@ -5,9 +5,11 @@ import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
 import Helmet from 'react-helmet';
 import { createGlobalStyle } from 'styled-components';
+import axios from 'axios';
 
 import configureStore from 'store';
 import Navbar from 'components/Navbar';
+import { checkLogin } from 'modules/user';
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -54,6 +56,16 @@ const MyApp = ({ Component, pageProps, store }) => {
 
 MyApp.getInitialProps = async ({ ctx, Component }) => {
     let pageProps = {};
+    const state = ctx.store.getState();
+    const cookie = ctx.isServer ? ctx.req.headers.cookie : '';
+
+    if (ctx.isServer && cookie) {
+        axios.defaults.headers.Cookie = cookie;
+    }
+
+    if (!state.user.user) {
+        await ctx.store.dispatch(checkLogin());
+    }
 
     if (Component.getInitialProps) {
         pageProps = await Component.getInitialProps(ctx);
