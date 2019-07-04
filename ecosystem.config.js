@@ -1,7 +1,7 @@
 module.exports = {
     apps: [
         {
-            name: 'app',
+            name: 'MY_NEXTJS_APP',
             script: './server.js',
             instances: 'max',
             env: {
