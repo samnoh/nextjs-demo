@@ -63,7 +63,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
         axios.defaults.headers.Cookie = cookie;
     }
 
-    if (!state.user.user) {
+    if (!state.user.user && ctx.isServer) {
         await ctx.store.dispatch(checkLogin());
     }
 
