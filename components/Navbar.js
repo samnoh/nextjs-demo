@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import styled from 'styled-components';
+import Router from 'next/router';
 
 import { postLogout } from 'modules/user';
 
@@ -16,6 +17,12 @@ const NavbarStyle = styled.div`
 const Navbar = () => {
     const dispatch = useDispatch();
     const { user } = useSelector(state => state.user);
+
+    const logout = useCallback(() => {
+        dispatch(postLogout());
+        Router.push('/');
+    }, []);
+
     return (
         <NavbarStyle>
             <Link href="/">
@@ -32,7 +39,7 @@ const Navbar = () => {
                     <a>Login</a>
                 </Link>
             )}
-            {user && <a onClick={() => dispatch(postLogout())}>Logout</a>}
+            {user && <a onClick={logout}>Logout</a>}
         </NavbarStyle>
     );
 };
