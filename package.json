@@ -6,9 +6,10 @@
     "scripts": {
         "dev": "node server.js",
         "build": "rm -rf build && ANALYZE=false next build",
-        "start": "NODE_ENV=production PORT=80 pm2 start server.js -i max",
+        "start": "pm2-runtime start ecosystem.config.js --env production",
+        "start:multicore": "NODE_ENV=production PORT=80 pm2 start server.js -i max",
         "stop": "pm2 stop all && pm2 delete all",
-        "clean-cache": "rimraf -rf ./node_modules/.cache"
+        "clean-cache": "rm -rf ./node_modules/.cache"
     },
     "keywords": [],
     "author": "",
