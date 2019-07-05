@@ -6,10 +6,6 @@
 -   redux-saga
 -   react-helmet
 -   styled-components
+-   session & cookie
+-   backend
 
-## Todo
-
--   cookie
--   session
--   auth
--   backend server
