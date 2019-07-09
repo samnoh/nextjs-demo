@@ -24,7 +24,7 @@ app.prepare().then(() => {
     server.use(compression());
     server.use('/', express.static(path.join(__dirname, 'public')));
     server.use(express.json());
-    server.use(express.urlencoded({ extended: true }));
+    server.use(express.urlencoded({ extended: false }));
     server.use(cookieParser(process.env.COOKIE_SECRET));
     server.use(
         expressSession({

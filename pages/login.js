@@ -36,7 +36,7 @@ const Signup = () => {
     return (
         <>
             {!loadinLogin && !user && (
-                <form onSubmit={onSubmit} style={{ padding: 10 }}>
+                <form onSubmit={onSubmit} style={{ textAlign: 'center', marginTop: '50px' }}>
                     <div>
                         <label htmlFor="user-id">아이디</label>
                         <br />

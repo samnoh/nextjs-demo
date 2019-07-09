@@ -57,13 +57,13 @@ const MyApp = ({ Component, pageProps, store }) => {
 MyApp.getInitialProps = async ({ ctx, Component }) => {
     let pageProps = {};
     const state = ctx.store.getState();
-    const cookie = ctx.isServer ? ctx.req.headers.cookie : '';
+    const cookie = ctx.isServer && ctx.req.headers.cookie;
 
     if (ctx.isServer && cookie) {
         axios.defaults.headers.Cookie = cookie;
     }
 
-    if (!state.user.user && ctx.isServer) {
+    if (!state.user.user && ctx.isServer && cookie) {
         await ctx.store.dispatch(checkLogin());
     }
 

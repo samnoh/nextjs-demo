@@ -21,7 +21,7 @@ const Navbar = () => {
     const logout = useCallback(() => {
         dispatch(postLogout());
         Router.push('/');
-    }, []);
+    }, [user]);
 
     return (
         <NavbarStyle>
@@ -39,7 +39,11 @@ const Navbar = () => {
                     <a>Login</a>
                 </Link>
             )}
-            {user && <a onClick={logout}>Logout</a>}
+            {user && (
+                <a style={{ cursor: 'pointer' }} onClick={logout}>
+                    Logout
+                </a>
+            )}
         </NavbarStyle>
     );
 };
